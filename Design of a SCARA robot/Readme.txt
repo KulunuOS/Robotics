@@ -1,0 +1,1 @@
+#Design of a SCARA 3-Dof robot manupilator with 1 DoF wrist
