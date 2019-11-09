@@ -6,7 +6,7 @@ This report presents a design and analysis of a SCARA robot using the theoretica
 ## Task:  
 The expected task performance is to pick an object [Red Piece] and place it on another object [Green Piece] which in the workspace of the designed robot.  
 
-![](/Description.PNG)
+![](Description.PNG)
  
 ## Data given: 
 The base of the robot and the position of the center of bottom surface of each object was given as data. 
