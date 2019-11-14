@@ -8,7 +8,7 @@ The expected task performance is to pick an object [Red Piece] and place it on a
 
 ![](Description.PNG)
  
-## Data given: 
+## Data: 
 The base of the robot and the position of the center of bottom surface of each object was given as data. 
 
 ![](Data.PNG)
