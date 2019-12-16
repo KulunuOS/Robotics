@@ -1,0 +1,48 @@
+MODULE MainModule
+    CONST robtarget Target_20:=[[104.10,-27.46,72.09],[0.71073,-0.0182876,0.00676033,0.703195],[-1,-1,-1,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget Target_30:=[[-53.39,-206.99,-321.14],[0.999656,-0.00291354,0.0192108,-0.0176155],[0,-1,-1,1],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+     PERS tooldata Fingers:=[TRUE,[[0,0,50],[1,0,0,0]],[1,[0,0,1],[1,0,0,0],0,0,0]];
+	TASK PERS wobjdata Cube_object_1:=[FALSE,TRUE,"",[[0,0,0],[1,0,0,0]],[[303.002,-603.236,852.224],[0,0,0,1]]];
+	TASK PERS wobjdata Bin_object_1:=[FALSE,TRUE,"",[[0,0,0],[1,0,0,0]],[[522,230,1197],[1,0,0,0]]];
+	
+    PROC main()
+        open_gripper;
+        HomePosition;
+        Path_10;
+        WaitTime 1;
+        Open_gripper;
+    ENDPROC
+    
+    PROC HomePosition()
+		MoveAbsJ [[0,0,0,0,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]]\NoEOffs,v200,z50,Fingers;
+	ENDPROC
+    
+    PROC Open_gripper()
+        SetDO Rob1_Gripper_Reset,1;
+        SetDO Rob1_Gripper_Set,0;
+    ENDPROC
+    
+    PROC close_gripper()
+        SetDO Rob1_Gripper_Reset,0;
+        SetDO Rob1_Gripper_Set,1;
+    ENDPROC
+    
+    
+        
+    PROC Path_10()
+        VAR robtarget onTop20;
+        onTop20 := Offs(Target_20,0,0,-75);
+        !Open_gripper;
+        MoveJ onTop20,v200,fine,Fingers\WObj:=Cube_object_1;
+        WaitTime 1;
+        MoveL Target_20,v100,fine,Fingers\WObj:=Cube_object_1;
+        WaitTime 1; 
+        close_gripper;
+        WaitTime 1; 
+        MoveL onTop20,v100,fine,Fingers\WObj:=Cube_object_1;
+        MoveJ Target_30,v100,fine,Fingers\WObj:=Bin_object_1;
+        
+    ENDPROC
+    
+ENDMODULE
+
