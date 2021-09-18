@@ -1,2 +1,2 @@
-# Robotics
-Implementations of tasks and project works related robotics 
+## SCARA Robot Design
+Implementations of a SCARA robot Design with Kinematics using Matlab Robotics toolbox
